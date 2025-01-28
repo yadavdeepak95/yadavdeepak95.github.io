@@ -1,13 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
-<!-- [Previous head section remains the same] -->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tanya & Deepak's Wedding</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-        /* [Previous styles remain the same] */
+        :root {
+            --primary-color: #D4AF37;  /* Indian Gold */
+            --secondary-color: #C41E3A; /* Indian Red */
+            --accent-color: #FF9933;   /* Saffron */
+            --text-color: #333;
+            --border-color: #FFB6C1;   /* Light Pink */
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -16,27 +22,43 @@
         }
 
         body {
-            background-color: #f8f9fa;
-            color: #333;
+            background-color: #FFF5E4;
+            color: var(--text-color);
             line-height: 1.6;
         }
 
         .header {
-            background-color: white;
-            padding: 5rem 1rem;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+                        url('/api/placeholder/1200/800') center/cover;
+            padding: 8rem 1rem;
             text-align: center;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: relative;
+            color: white;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='52' height='26' viewBox='0 0 52 26' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Cpath d='M10 10c0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6h2c0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4v2c-3.314 0-6-2.686-6-6 0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6zm25.464-1.95l8.486 8.486-1.414 1.414-8.486-8.486 1.414-1.414z' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.1;
         }
 
         .names {
-            font-size: 2.5rem;
+            font-size: 3.5rem;
             margin-bottom: 1rem;
             font-family: 'Times New Roman', serif;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
         }
 
         .date {
-            color: #666;
-            font-size: 1.5rem;
+            color: white;
+            font-size: 1.8rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
         }
 
         .container {
@@ -47,23 +69,44 @@
 
         .card {
             background: white;
-            border-radius: 8px;
+            border-radius: 12px;
             padding: 2rem;
             margin-bottom: 2rem;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border: 1px solid var(--border-color);
         }
 
         .section-title {
-            font-size: 1.8rem;
+            font-size: 2rem;
             margin-bottom: 1.5rem;
-            color: #333;
+            color: var(--secondary-color);
             font-family: 'Times New Roman', serif;
+            text-align: center;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            border-radius: 2px;
         }
 
         .schedule-item {
-            border-left: 4px solid #fecdd3;
+            border-left: 4px solid var(--primary-color);
             padding-left: 1rem;
             margin-bottom: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .schedule-item:hover {
+            transform: translateX(10px);
         }
 
         .travel-grid {
@@ -73,12 +116,20 @@
         }
 
         .travel-item {
-            padding: 1rem;
+            padding: 1.5rem;
+            background: linear-gradient(145deg, #ffffff, #f5f5f5);
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .travel-item:hover {
+            transform: translateY(-5px);
         }
 
         .travel-item i {
-            color: #f43f5e;
+            color: var(--secondary-color);
             margin-right: 0.5rem;
+            font-size: 1.2rem;
         }
 
         .places-grid {
@@ -88,21 +139,29 @@
         }
 
         .place-item {
-            border-left: 4px solid #fecdd3;
-            padding-left: 1rem;
+            border-left: 4px solid var(--accent-color);
+            padding: 1rem;
+            background: linear-gradient(145deg, #ffffff, #f5f5f5);
+            transition: transform 0.3s ease;
+        }
+
+        .place-item:hover {
+            transform: translateX(5px);
         }
 
         .btn {
             display: inline-flex;
             align-items: center;
-            padding: 0.5rem 1rem;
-            background-color: #fecdd3;
-            color: #9d174d;
+            padding: 0.5rem 1.5rem;
+            background-color: var(--primary-color);
+            color: white;
             border: none;
-            border-radius: 4px;
+            border-radius: 25px;
             cursor: pointer;
             text-decoration: none;
             margin: 0.5rem;
+            transition: all 0.3s ease;
+            font-weight: 500;
         }
 
         .btn i {
@@ -110,48 +169,57 @@
         }
 
         .btn:hover {
-            background-color: #fda4af;
-        }
-
-        .btn.primary {
-            background-color: #f43f5e;
-            color: white;
-        }
-
-        .btn.primary:hover {
-            background-color: #e11d48;
+            background-color: var(--secondary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
         }
 
         .footer {
             text-align: center;
             padding: 2rem;
-            background: white;
-            color: #666;
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            color: white;
             font-style: italic;
         }
 
         @media (max-width: 768px) {
             .names {
-                font-size: 2rem;
+                font-size: 2.5rem;
             }
             
             .date {
-                font-size: 1.2rem;
+                font-size: 1.4rem;
             }
 
             .card {
                 padding: 1rem;
             }
         }
+
+        /* Animation for elements */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .card {
+            animation: fadeInUp 0.6s ease forwards;
+        }
     </style>
 </head>
 <body>
-    <!-- [Previous header remains the same] -->
+    <!-- [Rest of the HTML remains the same as before, just remove the "Add All Events" button] -->
     <header class="header">
         <h1 class="names">
             Tanya Bhardwaj
             <br>
-            <span style="color: #666; font-size: 1.5rem;">&</span>
+            <span style="color: var(--accent-color); font-size: 1.5rem;">&</span>
             <br>
             Deepak Yadav
         </h1>
@@ -159,16 +227,11 @@
     </header>
 
     <div class="container">
-        <!-- Updated Schedule Section -->
+        <!-- Schedule Section -->
         <section class="card">
             <h2 class="section-title">
                 <i class="fas fa-clock"></i> Schedule
             </h2>
-            <div style="margin-bottom: 2rem;">
-                <button class="btn primary" onclick="addAllToCalendar()">
-                    <i class="fas fa-calendar-plus"></i> Add All Events to Calendar
-                </button>
-            </div>
             <div class="schedule-item">
                 <h3>Wednesday, March 05, 2025</h3>
                 <p>Shagu and Engagement</p>
@@ -201,8 +264,69 @@
             </div>
         </section>
 
-        <!-- [Rest of the sections remain the same] -->
-        <!-- [Previous Travel and Things To Do sections remain unchanged] -->
+        <!-- Travel Section -->
+        <section class="card">
+            <h2 class="section-title">Travel</h2>
+            <div class="travel-grid">
+                <div class="travel-item">
+                    <h3><i class="fas fa-hotel"></i> Hotel</h3>
+                    <p>Jalandhar City</p>
+                    <p style="font-size: 0.9rem; margin-top: 0.5rem;">
+                        We have booked a hotel in Jalandhar near the venue for our guests. 
+                        One of our family members will coordinate with more details.
+                    </p>
+                </div>
+
+                <div class="travel-item">
+                    <h3><i class="fas fa-plane"></i> Flight</h3>
+                    <p>Amritsar Airport or Chandigarh Airport</p>
+                    <p style="font-size: 0.9rem; margin-top: 0.5rem;">
+                        If flying in, these are the two nearest airports, both airports are 1 hr and 30 min drive from the venue
+                    </p>
+                </div>
+
+                <div class="travel-item">
+                    <h3><i class="fas fa-train"></i> Train</h3>
+                    <p>Jalandhar and Jalandhar Cantt Railway Station</p>
+                    <p style="font-size: 0.9rem; margin-top: 0.5rem;">
+                        If traveling by train, these are the nearest Railway Stations, both stations are 20 min drive from the venue
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Things To Do Section -->
+        <section class="card">
+            <h2 class="section-title">
+                <i class="fas fa-camera"></i> Things To Do
+            </h2>
+            <div class="places-grid">
+                <div class="place-item">
+                    <h3>Golden Temple</h3>
+                    <p>Amritsar, PB 143006, India</p>
+                </div>
+                <div class="place-item">
+                    <h3>Attari - Wagah Border</h3>
+                    <p>Amritsar, PB 143108, India</p>
+                </div>
+                <div class="place-item">
+                    <h3>Baba Farid ji Gurudwara</h3>
+                    <p>Kotkapura, PB 151203, India</p>
+                </div>
+                <div class="place-item">
+                    <h3>Jang-e-Azadi Memorial</h3>
+                    <p>Jalandhar, PB 144801, India</p>
+                </div>
+                <div class="place-item">
+                    <h3>Devi Talab Mandir</h3>
+                    <p>Jalandhar, PB 144004, India</p>
+                </div>
+                <div class="place-item">
+                    <h3>Jallianwala Bagh</h3>
+                    <p>Amritsar, PB 143006, India</p>
+                </div>
+            </div>
+        </section>
     </div>
 
     <footer class="footer">
@@ -218,30 +342,6 @@
         function addToCalendar(title, startTime, endTime, location) {
             const calendarUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(title)}&dates=${startTime.replace(/[-:]/g, '')}/${endTime.replace(/[-:]/g, '')}&location=${encodeURIComponent(location)}`;
             window.open(calendarUrl, '_blank');
-        }
-
-        function addAllToCalendar() {
-            // Create calendar URLs for both events
-            const events = [
-                {
-                    title: 'Tanya & Deepak - Shagu and Engagement',
-                    start: '2025-03-05T18:00:00',
-                    end: '2025-03-05T23:45:00',
-                    location: 'Ramada 1, Raj Mahal, Jalandhar, PB 144005, India'
-                },
-                {
-                    title: 'Tanya & Deepak - Wedding Ceremony',
-                    start: '2025-03-06T18:00:00',
-                    end: '2025-03-06T23:45:00',
-                    location: 'Ramada 2, Abc, Jalandhar, PB 144001, India'
-                }
-            ];
-
-            // Open calendar links for both events
-            events.forEach(event => {
-                const calendarUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(event.title)}&dates=${event.start.replace(/[-:]/g, '')}/${event.end.replace(/[-:]/g, '')}&location=${encodeURIComponent(event.location)}`;
-                window.open(calendarUrl, '_blank');
-            });
         }
     </script>
 </body>

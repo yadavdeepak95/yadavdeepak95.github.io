@@ -1,1 +1,125 @@
-test if it works we can add more
+import React from 'react';
+import { Calendar, MapPin, Plane, Train, Hotel, Clock, Camera } from 'lucide-react';
+
+const WeddingInvitation = () => {
+  return (
+    <div className="min-h-screen bg-slate-50">
+      {/* Hero Section */}
+      <header className="bg-white py-20 text-center">
+        <h1 className="text-4xl font-serif mb-6">
+          <span className="block mb-2">Tanya Bhardwaj</span>
+          <span className="text-2xl text-gray-400 block">&</span>
+          <span className="block mt-2">Deepak Yadav</span>
+        </h1>
+        <p className="text-xl text-gray-600">March 06, 2025</p>
+      </header>
+
+      {/* Schedule Section */}
+      <section className="max-w-4xl mx-auto p-8 bg-white mt-8 rounded-lg shadow-sm">
+        <h2 className="text-2xl font-serif mb-6 flex items-center gap-2">
+          <Clock className="w-6 h-6" />
+          Schedule
+        </h2>
+        <div className="border-l-4 border-rose-200 pl-4">
+          <h3 className="font-medium">Wednesday, March 05, 2025</h3>
+          <p className="text-gray-600 mt-2">Shagu and Engagement</p>
+          <p className="text-gray-500">6:00 pm - 11:45 pm</p>
+          <p className="mt-2">Ramada 1</p>
+          <p className="text-gray-600">Raj Mahal, Jalandhar, PB 144005, India</p>
+          <div className="mt-4 space-x-4">
+            <button className="inline-flex items-center px-4 py-2 bg-rose-100 text-rose-700 rounded-md hover:bg-rose-200">
+              <MapPin className="w-4 h-4 mr-2" />
+              View Map
+            </button>
+            <button className="inline-flex items-center px-4 py-2 bg-rose-100 text-rose-700 rounded-md hover:bg-rose-200">
+              <Calendar className="w-4 h-4 mr-2" />
+              Add to Calendar
+            </button>
+          </div>
+        </div>
+      </section>
+
+      {/* Travel Section */}
+      <section className="max-w-4xl mx-auto p-8 bg-white mt-8 rounded-lg shadow-sm">
+        <h2 className="text-2xl font-serif mb-6">Travel</h2>
+        
+        <div className="grid md:grid-cols-3 gap-8">
+          <div className="space-y-4">
+            <div className="flex items-center gap-2">
+              <Hotel className="w-6 h-6 text-rose-600" />
+              <h3 className="font-medium">Hotel</h3>
+            </div>
+            <p className="text-gray-600">Jalandhar City</p>
+            <p className="text-sm">We have booked a hotel in Jalandhar near the venue for our guests. One of our family members will coordinate with more details.</p>
+          </div>
+
+          <div className="space-y-4">
+            <div className="flex items-center gap-2">
+              <Plane className="w-6 h-6 text-rose-600" />
+              <h3 className="font-medium">Flight</h3>
+            </div>
+            <p className="text-gray-600">Amritsar Airport or Chandigarh Airport</p>
+            <p className="text-sm">If flying in, these are the two nearest airports, both airports are 1 hr and 30 min drive from the venue</p>
+          </div>
+
+          <div className="space-y-4">
+            <div className="flex items-center gap-2">
+              <Train className="w-6 h-6 text-rose-600" />
+              <h3 className="font-medium">Train</h3>
+            </div>
+            <p className="text-gray-600">Jalandhar and Jalandhar Cantt Railway Station</p>
+            <p className="text-sm">If traveling by train, these are the nearest Railway Stations, both stations are 20 min drive from the venue</p>
+          </div>
+        </div>
+      </section>
+
+      {/* Things To Do Section */}
+      <section className="max-w-4xl mx-auto p-8 bg-white mt-8 mb-8 rounded-lg shadow-sm">
+        <h2 className="text-2xl font-serif mb-6 flex items-center gap-2">
+          <Camera className="w-6 h-6" />
+          Things To Do
+        </h2>
+        <div className="grid md:grid-cols-2 gap-6">
+          {[
+            {
+              name: "Golden Temple",
+              location: "Amritsar, PB 143006, India"
+            },
+            {
+              name: "Attari - Wagah Border",
+              location: "Amritsar, PB 143108, India"
+            },
+            {
+              name: "Baba Farid ji Gurudwara",
+              location: "Kotkapura, PB 151203, India"
+            },
+            {
+              name: "Jang-e-Azadi Memorial",
+              location: "Jalandhar, PB 144801, India"
+            },
+            {
+              name: "Devi Talab Mandir",
+              location: "Jalandhar, PB 144004, India"
+            },
+            {
+              name: "Jallianwala Bagh",
+              location: "Amritsar, PB 143006, India"
+            }
+          ].map((place, index) => (
+            <div key={index} className="border-l-4 border-rose-200 pl-4 py-2">
+              <h3 className="font-medium">{place.name}</h3>
+              <p className="text-gray-600 text-sm mt-1">{place.location}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="text-center py-8 text-gray-600 bg-white">
+        <p className="italic">For all the days along the way</p>
+      </footer>
+    </div>
+  );
+};
+
+export default WeddingInvitation;

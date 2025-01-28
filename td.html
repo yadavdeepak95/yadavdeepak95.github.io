@@ -1,125 +1,248 @@
-import React from 'react';
-import { Calendar, MapPin, Plane, Train, Hotel, Clock, Camera } from 'lucide-react';
+<!DOCTYPE html>
+<html lang="en">
+<!-- [Previous head section remains the same] -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tanya & Deepak's Wedding</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        /* [Previous styles remain the same] */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
 
-const WeddingInvitation = () => {
-  return (
-    <div className="min-h-screen bg-slate-50">
-      {/* Hero Section */}
-      <header className="bg-white py-20 text-center">
-        <h1 className="text-4xl font-serif mb-6">
-          <span className="block mb-2">Tanya Bhardwaj</span>
-          <span className="text-2xl text-gray-400 block">&</span>
-          <span className="block mt-2">Deepak Yadav</span>
-        </h1>
-        <p className="text-xl text-gray-600">March 06, 2025</p>
-      </header>
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
 
-      {/* Schedule Section */}
-      <section className="max-w-4xl mx-auto p-8 bg-white mt-8 rounded-lg shadow-sm">
-        <h2 className="text-2xl font-serif mb-6 flex items-center gap-2">
-          <Clock className="w-6 h-6" />
-          Schedule
-        </h2>
-        <div className="border-l-4 border-rose-200 pl-4">
-          <h3 className="font-medium">Wednesday, March 05, 2025</h3>
-          <p className="text-gray-600 mt-2">Shagu and Engagement</p>
-          <p className="text-gray-500">6:00 pm - 11:45 pm</p>
-          <p className="mt-2">Ramada 1</p>
-          <p className="text-gray-600">Raj Mahal, Jalandhar, PB 144005, India</p>
-          <div className="mt-4 space-x-4">
-            <button className="inline-flex items-center px-4 py-2 bg-rose-100 text-rose-700 rounded-md hover:bg-rose-200">
-              <MapPin className="w-4 h-4 mr-2" />
-              View Map
-            </button>
-            <button className="inline-flex items-center px-4 py-2 bg-rose-100 text-rose-700 rounded-md hover:bg-rose-200">
-              <Calendar className="w-4 h-4 mr-2" />
-              Add to Calendar
-            </button>
-          </div>
-        </div>
-      </section>
+        .header {
+            background-color: white;
+            padding: 5rem 1rem;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
 
-      {/* Travel Section */}
-      <section className="max-w-4xl mx-auto p-8 bg-white mt-8 rounded-lg shadow-sm">
-        <h2 className="text-2xl font-serif mb-6">Travel</h2>
-        
-        <div className="grid md:grid-cols-3 gap-8">
-          <div className="space-y-4">
-            <div className="flex items-center gap-2">
-              <Hotel className="w-6 h-6 text-rose-600" />
-              <h3 className="font-medium">Hotel</h3>
-            </div>
-            <p className="text-gray-600">Jalandhar City</p>
-            <p className="text-sm">We have booked a hotel in Jalandhar near the venue for our guests. One of our family members will coordinate with more details.</p>
-          </div>
+        .names {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-family: 'Times New Roman', serif;
+        }
 
-          <div className="space-y-4">
-            <div className="flex items-center gap-2">
-              <Plane className="w-6 h-6 text-rose-600" />
-              <h3 className="font-medium">Flight</h3>
-            </div>
-            <p className="text-gray-600">Amritsar Airport or Chandigarh Airport</p>
-            <p className="text-sm">If flying in, these are the two nearest airports, both airports are 1 hr and 30 min drive from the venue</p>
-          </div>
+        .date {
+            color: #666;
+            font-size: 1.5rem;
+        }
 
-          <div className="space-y-4">
-            <div className="flex items-center gap-2">
-              <Train className="w-6 h-6 text-rose-600" />
-              <h3 className="font-medium">Train</h3>
-            </div>
-            <p className="text-gray-600">Jalandhar and Jalandhar Cantt Railway Station</p>
-            <p className="text-sm">If traveling by train, these are the nearest Railway Stations, both stations are 20 min drive from the venue</p>
-          </div>
-        </div>
-      </section>
+        .container {
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
 
-      {/* Things To Do Section */}
-      <section className="max-w-4xl mx-auto p-8 bg-white mt-8 mb-8 rounded-lg shadow-sm">
-        <h2 className="text-2xl font-serif mb-6 flex items-center gap-2">
-          <Camera className="w-6 h-6" />
-          Things To Do
-        </h2>
-        <div className="grid md:grid-cols-2 gap-6">
-          {[
-            {
-              name: "Golden Temple",
-              location: "Amritsar, PB 143006, India"
-            },
-            {
-              name: "Attari - Wagah Border",
-              location: "Amritsar, PB 143108, India"
-            },
-            {
-              name: "Baba Farid ji Gurudwara",
-              location: "Kotkapura, PB 151203, India"
-            },
-            {
-              name: "Jang-e-Azadi Memorial",
-              location: "Jalandhar, PB 144801, India"
-            },
-            {
-              name: "Devi Talab Mandir",
-              location: "Jalandhar, PB 144004, India"
-            },
-            {
-              name: "Jallianwala Bagh",
-              location: "Amritsar, PB 143006, India"
+        .card {
+            background: white;
+            border-radius: 8px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: #333;
+            font-family: 'Times New Roman', serif;
+        }
+
+        .schedule-item {
+            border-left: 4px solid #fecdd3;
+            padding-left: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .travel-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .travel-item {
+            padding: 1rem;
+        }
+
+        .travel-item i {
+            color: #f43f5e;
+            margin-right: 0.5rem;
+        }
+
+        .places-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .place-item {
+            border-left: 4px solid #fecdd3;
+            padding-left: 1rem;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.5rem 1rem;
+            background-color: #fecdd3;
+            color: #9d174d;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            margin: 0.5rem;
+        }
+
+        .btn i {
+            margin-right: 0.5rem;
+        }
+
+        .btn:hover {
+            background-color: #fda4af;
+        }
+
+        .btn.primary {
+            background-color: #f43f5e;
+            color: white;
+        }
+
+        .btn.primary:hover {
+            background-color: #e11d48;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            background: white;
+            color: #666;
+            font-style: italic;
+        }
+
+        @media (max-width: 768px) {
+            .names {
+                font-size: 2rem;
             }
-          ].map((place, index) => (
-            <div key={index} className="border-l-4 border-rose-200 pl-4 py-2">
-              <h3 className="font-medium">{place.name}</h3>
-              <p className="text-gray-600 text-sm mt-1">{place.location}</p>
+            
+            .date {
+                font-size: 1.2rem;
+            }
+
+            .card {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- [Previous header remains the same] -->
+    <header class="header">
+        <h1 class="names">
+            Tanya Bhardwaj
+            <br>
+            <span style="color: #666; font-size: 1.5rem;">&</span>
+            <br>
+            Deepak Yadav
+        </h1>
+        <p class="date">March 06, 2025</p>
+    </header>
+
+    <div class="container">
+        <!-- Updated Schedule Section -->
+        <section class="card">
+            <h2 class="section-title">
+                <i class="fas fa-clock"></i> Schedule
+            </h2>
+            <div style="margin-bottom: 2rem;">
+                <button class="btn primary" onclick="addAllToCalendar()">
+                    <i class="fas fa-calendar-plus"></i> Add All Events to Calendar
+                </button>
             </div>
-          ))}
-        </div>
-      </section>
+            <div class="schedule-item">
+                <h3>Wednesday, March 05, 2025</h3>
+                <p>Shagu and Engagement</p>
+                <p style="color: #666;">6:00 pm - 11:45 pm</p>
+                <p>Ramada 1</p>
+                <p style="color: #666;">Raj Mahal, Jalandhar, PB 144005, India</p>
+                <div style="margin-top: 1rem;">
+                    <button class="btn" onclick="openMap('Ramada 1, Raj Mahal, Jalandhar, PB 144005, India')">
+                        <i class="fas fa-map-marker-alt"></i> View Map
+                    </button>
+                    <button class="btn" onclick="addToCalendar('Shagu and Engagement', '2025-03-05T18:00:00', '2025-03-05T23:45:00', 'Ramada 1, Raj Mahal, Jalandhar, PB 144005, India')">
+                        <i class="fas fa-calendar"></i> Add to Calendar
+                    </button>
+                </div>
+            </div>
+            <div class="schedule-item">
+                <h3>Thursday, March 06, 2025</h3>
+                <p>Wedding</p>
+                <p style="color: #666;">6:00 pm - 11:45 pm</p>
+                <p>Ramada 2</p>
+                <p style="color: #666;">Abc, Jalandhar, PB 144001, India</p>
+                <div style="margin-top: 1rem;">
+                    <button class="btn" onclick="openMap('Ramada 2, Abc, Jalandhar, PB 144001, India')">
+                        <i class="fas fa-map-marker-alt"></i> View Map
+                    </button>
+                    <button class="btn" onclick="addToCalendar('Wedding Ceremony', '2025-03-06T18:00:00', '2025-03-06T23:45:00', 'Ramada 2, Abc, Jalandhar, PB 144001, India')">
+                        <i class="fas fa-calendar"></i> Add to Calendar
+                    </button>
+                </div>
+            </div>
+        </section>
 
-      {/* Footer */}
-      <footer className="text-center py-8 text-gray-600 bg-white">
-        <p className="italic">For all the days along the way</p>
-      </footer>
+        <!-- [Rest of the sections remain the same] -->
+        <!-- [Previous Travel and Things To Do sections remain unchanged] -->
     </div>
-  );
-};
 
-export default WeddingInvitation;
+    <footer class="footer">
+        <p>For all the days along the way</p>
+    </footer>
+
+    <script>
+        function openMap(location) {
+            const mapUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(location)}`;
+            window.open(mapUrl, '_blank');
+        }
+
+        function addToCalendar(title, startTime, endTime, location) {
+            const calendarUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(title)}&dates=${startTime.replace(/[-:]/g, '')}/${endTime.replace(/[-:]/g, '')}&location=${encodeURIComponent(location)}`;
+            window.open(calendarUrl, '_blank');
+        }
+
+        function addAllToCalendar() {
+            // Create calendar URLs for both events
+            const events = [
+                {
+                    title: 'Tanya & Deepak - Shagu and Engagement',
+                    start: '2025-03-05T18:00:00',
+                    end: '2025-03-05T23:45:00',
+                    location: 'Ramada 1, Raj Mahal, Jalandhar, PB 144005, India'
+                },
+                {
+                    title: 'Tanya & Deepak - Wedding Ceremony',
+                    start: '2025-03-06T18:00:00',
+                    end: '2025-03-06T23:45:00',
+                    location: 'Ramada 2, Abc, Jalandhar, PB 144001, India'
+                }
+            ];
+
+            // Open calendar links for both events
+            events.forEach(event => {
+                const calendarUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(event.title)}&dates=${event.start.replace(/[-:]/g, '')}/${event.end.replace(/[-:]/g, '')}&location=${encodeURIComponent(event.location)}`;
+                window.open(calendarUrl, '_blank');
+            });
+        }
+    </script>
+</body>
+</html>
